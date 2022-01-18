@@ -1,6 +1,5 @@
 package lab7;
 
-package lab7;
 
 public class Account {
 

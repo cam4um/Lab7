@@ -42,12 +42,7 @@ public class Customer {
                     }
                     break;
                 case PERSON:
-                    // we are in overdraft
-                    if (account.getMoney() < 0) {
-                        account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee());
-                    } else {
-                        account.setMoney(account.getMoney() - sum);
-                    }
+                    withdrawForPerson(sum);
                     break;
             }
         } else {
@@ -62,16 +57,24 @@ public class Customer {
                     }
                     break;
                 case PERSON:
-                    // we are in overdraft
-                    if (account.getMoney() < 0) {
-                        account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee());
-                    } else {
-                        account.setMoney(account.getMoney() - sum);
-                    }
+                    withdrawForPerson(sum);
                     break;
             }
         }
     }
+
+
+public void withdrawForPerson(double sum){
+    // we are in overdraft
+    if (account.getMoney() < 0) {
+        account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee());
+    } else {
+      account.setMoney(account.getMoney() - sum);
+    }
+
+}
+
+
 
     public String getName() {
         return name;
@@ -97,18 +100,21 @@ public class Customer {
         this.customerType = customerType;
     }
 
-    public String printCustomerDaysOverdrawn() {
-        String fullName = name + " " + surname + " ";
 
+public String fullName(){
+    String fullName = name + " " + surname + " ";
+    return fullName;
+}
+
+    public String printCustomerDaysOverdrawn() {
         String accountDescription = "Account: IBAN: " + account.getIban() + ", Days Overdrawn: " + account.getDaysOverdrawn();
-        return fullName + accountDescription;
+        return fullName() + accountDescription;
     }
 
     public String printCustomerMoney() {
-        String fullName = name + " " + surname + " ";
         String accountDescription = "";
         accountDescription += "Account: IBAN: " + account.getIban() + ", Money: " + account.getMoney();
-        return fullName + accountDescription;
+        return fullName() + accountDescription;
     }
 
     public String printCustomerAccount() {
