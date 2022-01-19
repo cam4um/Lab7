@@ -80,9 +80,7 @@ public class Account {
         return type;
     }
 
-    public String printCustomer() {
-        return customer.getName() + " " + customer.getEmail();
-    }
+
 
     public String getCurrency() {
         return currency;
