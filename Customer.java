@@ -33,7 +33,7 @@ public class Customer {
 
     public void withdraw(double sum, String currency) {
         currencyCheck(currency);
-        if (account.getType().isPremium()) {
+        if (account.isPremium()) {
             switch (customerType) {
                 case COMPANY:
                     withdrawForCompanyPremium(sum);
@@ -135,7 +135,7 @@ public String fullName(){
 
     public String printCustomerAccount() {
         return "Account: IBAN: " + account.getIban() + ", Money: "
-                + account.getMoney() + ", Account type: " + account.getType();
+                + account.getMoney() + ", Account type: " + account.toString();
     }
 
 

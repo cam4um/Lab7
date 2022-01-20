@@ -3,9 +3,10 @@ package lab7;
 
 public class Account {
 
+
     private String iban;
 
-    private AccountType type;
+    public Account type;
 
     private int daysOverdrawn;
 
@@ -15,10 +16,14 @@ public class Account {
 
     private Customer customer;
 
-    public Account(AccountType type, int daysOverdrawn) {
+    private boolean premium;
+
+    public Account(boolean premium, int daysOverdrawn) {
         super();
-        this.type = type;
+
+        this.premium = premium;
         this.daysOverdrawn = daysOverdrawn;
+
     }
 
     public double bankcharge() {
@@ -30,7 +35,7 @@ public class Account {
     }
 
     private double overdraftCharge() {
-        if (type.isPremium()) {
+        if (isPremium()) {
             double result = 10;
             if (getDaysOverdrawn() > 7)
                 result += (getDaysOverdrawn() - 7) * 1.0;
@@ -40,7 +45,7 @@ public class Account {
     }
 
     public double overdraftFee() {
-        if (type.isPremium()) {
+        if (isPremium()) {
             return 0.10;
         } else {
             return 0.20;
@@ -76,9 +81,7 @@ public class Account {
         this.customer = customer;
     }
 
-    public AccountType getType() {
-        return type;
-    }
+
 
 
 
@@ -88,5 +91,20 @@ public class Account {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+
+    public boolean getType() {
+
+        return premium;}
+
+    public boolean isPremium() {
+
+        return premium;
+    }
+
+    @Override
+    public String toString() {
+        return premium ? "premium" : "normal";
     }
 }
