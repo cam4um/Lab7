@@ -16,6 +16,8 @@ public class Account {
 
     private Customer customer;
 
+    private Company company;
+
     private boolean premium;
 
     public Account(boolean premium, int daysOverdrawn) {
@@ -81,8 +83,13 @@ public class Account {
         this.customer = customer;
     }
 
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
-
+    public Company getCompany() {
+        return company;
+    }
 
 
     public String getCurrency() {

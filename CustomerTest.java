@@ -42,32 +42,32 @@ public class CustomerTest {
     @Test
     public void testWithdrawCompanyWithNormalAccount() throws Exception {
         Account account = getAccountByTypeAndMoney(false, 34);
-        Customer customer = getCompanyCustomer(account);
-        customer.withdraw(10, "EUR");
+        Company company = getCompanyCustomer(account);
+        company.withdrawCompany(10, "EUR");
         assertThat(account.getMoney(), is(24.0));
     }
 
     @Test
     public void testWithdrawCompanyWithNormalAccountAndOverdraft() throws Exception {
         Account account = getAccountByTypeAndMoney(false, -10);
-        Customer customer = getCompanyCustomer(account);
-        customer.withdraw(10, "EUR");
+        Company company = getCompanyCustomer(account);
+        company.withdrawCompany(10, "EUR");
         assertThat(account.getMoney(), is(-21.0));
     }
 
     @Test
     public void testWithdrawCompanyWithPremiumAccount() throws Exception {
         Account account = getAccountByTypeAndMoney(true, 34);
-        Customer customer = getCompanyCustomer(account);
-        customer.withdraw(10, "EUR");
+        Company company = getCompanyCustomer(account);
+        company.withdrawCompany(10, "EUR");
         assertThat(account.getMoney(), is(24.0));
     }
 
     @Test
     public void testWithdrawCompanyWithPremiumAccountAndOverdraft() throws Exception {
         Account account = getAccountByTypeAndMoney(true, -10);
-        Customer customer = getCompanyCustomer(account);
-        customer.withdraw(10, "EUR");
+        Company company = getCompanyCustomer(account);
+        company.withdrawCompany(10, "EUR");
         assertThat(account.getMoney(), is(-20.25));
     }
 
@@ -118,9 +118,9 @@ public class CustomerTest {
         return customer;
     }
 
-    private Customer getCompanyCustomer(Account account) {
-        Customer customer = new Customer("company", "company@mail.com", account, 0.50);
-        account.setCustomer(customer);
-        return customer;
+    private Company getCompanyCustomer(Account account) {
+        Company company = new Company("company", "company@mail.com", account, 0.50);
+        account.setCompany(company);
+        return company;
     }
 }

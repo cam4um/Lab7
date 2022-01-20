@@ -22,37 +22,12 @@ public class Customer {
         this.account = account;
     }
 
-    // use only to create companies
-    public Customer(String name, String email, Account account, double companyOverdraftDiscount) {
-        this.name = name;
-        this.email = email;
-        this.customerType = CustomerType.COMPANY;
-        this.account = account;
-        this.companyOverdraftDiscount = companyOverdraftDiscount;
-    }
 
     public void withdraw(double sum, String currency) {
         currencyCheck(currency);
-        if (account.isPremium()) {
-            switch (customerType) {
-                case COMPANY:
-                    withdrawForCompanyPremium(sum);
-                    break;
-                case PERSON:
-                    withdrawForPerson(sum);
-                    break;
-            }
-        } else {
-            switch (customerType) {
-                case COMPANY:
-                    withdrawForCompany(sum);
-                    break;
-                case PERSON:
-                    withdrawForPerson(sum);
-                    break;
-            }
+        withdrawForPerson(sum);
         }
-    }
+
 
     public void currencyCheck(String currency){
         if (!account.getCurrency().equals(currency)) {
@@ -60,25 +35,7 @@ public class Customer {
         }
     }
 
-public void withdrawForCompanyPremium(double sum){
-    // we are in overdraft
-    if (account.getMoney() < 0) {
-        // 50 percent discount for overdraft for premium account
-        account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee() * companyOverdraftDiscount / 2);
-    } else {
-        account.setMoney(account.getMoney() - sum);
-    }
-}
 
-    public void withdrawForCompany(double sum){
-        // we are in overdraft
-        if (account.getMoney() < 0) {
-            // no discount for overdraft for not premium account
-            account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee() * companyOverdraftDiscount);
-        } else {
-            account.setMoney(account.getMoney() - sum);
-        }
-    }
 
 public void withdrawForPerson(double sum){
     // we are in overdraft
@@ -108,13 +65,7 @@ public void withdrawForPerson(double sum){
         this.email = email;
     }
 
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
 
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
-    }
 
 
 public String fullName(){
