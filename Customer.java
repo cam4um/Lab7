@@ -2,6 +2,11 @@ package lab7;
 
 public class Customer {
 
+    public enum CustomerType {
+        COMPANY,
+        PERSON
+    }
+
     private String name;
     private String surname;
     private String email;

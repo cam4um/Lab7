@@ -115,7 +115,7 @@ public class CustomerTest {
     }
 
     private Customer getPersonCustomer(Account account) {
-        Customer customer = new Customer("danix", "dan", "dan@mail.com", CustomerType.PERSON, account);
+        Customer customer = new Customer("danix", "dan", "dan@mail.com", Customer.CustomerType.PERSON, account);
         account.setCustomer(customer);
         return customer;
     }
