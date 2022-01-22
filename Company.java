@@ -3,16 +3,17 @@ package lab7;
 public class Company {
 
     private String name;
+
     private String email;
-    private Customer.CustomerType customerType;
+    private boolean company;
     private Account account;
     private double companyOverdraftDiscount = 1;
 
     // use only to create companies
-    public Company(String name, String email, Account account, double companyOverdraftDiscount) {
+    public Company(String name, String email, boolean company, Account account, double companyOverdraftDiscount) {
         this.name = name;
         this.email = email;
-        this.customerType = Customer.CustomerType.COMPANY;
+        this.company = company;
         this.account = account;
         this.companyOverdraftDiscount = companyOverdraftDiscount;
     }

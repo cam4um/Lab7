@@ -1,24 +1,22 @@
 package lab7;
 
-public class Customer {
+public class Customer{
 
-    public enum CustomerType {
-        COMPANY,
-        PERSON
-    }
+
 
     private String name;
     private String surname;
     private String email;
-    private CustomerType customerType;
+    private boolean person;
     private Account account;
-    private double companyOverdraftDiscount = 1;
 
-    public Customer(String name, String surname, String email, CustomerType customerType, Account account) {
+
+    public Customer(String name, String surname, String email, boolean person, Account account) {
+
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.customerType = customerType;
+        this.person = person;
         this.account = account;
     }
 

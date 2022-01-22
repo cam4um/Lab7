@@ -113,13 +113,13 @@ public class CustomerTest {
     }
 
     private Customer getPersonCustomer(Account account) {
-        Customer customer = new Customer("danix", "dan", "dan@mail.com", Customer.CustomerType.PERSON, account);
+        Customer customer = new Customer("danix", "dan", "dan@mail.com", true, account);
         account.setCustomer(customer);
         return customer;
     }
 
     private Company getCompanyCustomer(Account account) {
-        Company company = new Company("company", "company@mail.com", account, 0.50);
+        Company company = new Company("company", "company@mail.com", true , account, 0.50);
         account.setCompany(company);
         return company;
     }
