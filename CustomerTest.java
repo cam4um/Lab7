@@ -71,11 +71,6 @@ public class CustomerTest {
         assertThat(account.getMoney(), is(-20.25));
     }
 
-    @Test
-    public void testPrintCustomerDaysOverdrawn() throws Exception {
-        Customer customer = getPersonWithAccount(false);
-        assertThat(customer.printCustomerDaysOverdrawn(), is("danix dan Account: IBAN: RO023INGB434321431241, Days Overdrawn: 9"));
-    }
 
     @Test
     public void testPrintCustomerMoney() throws Exception {

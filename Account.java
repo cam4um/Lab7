@@ -114,4 +114,9 @@ public class Account {
     public String toString() {
         return premium ? "premium" : "normal";
     }
+
+    public String printCustomerDaysOverdrawn() {
+        String accountDescription = "Account: IBAN: " + getIban() + ", Days Overdrawn: " + getDaysOverdrawn();
+        return customer.fullName() + accountDescription;
+    }
 }
