@@ -36,7 +36,7 @@ public class Customer{
 
 
 public void withdrawForPerson(double sum){
-    // we are in overdraft
+
     if (account.getMoney() < 0) {
         account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee());
     } else {

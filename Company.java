@@ -9,7 +9,7 @@ public class Company {
     private Account account;
     private double companyOverdraftDiscount = 1;
 
-    // use only to create companies
+
     public Company(String name, String email, boolean company, Account account, double companyOverdraftDiscount) {
         this.name = name;
         this.email = email;
@@ -37,9 +37,9 @@ public class Company {
 
 
     public void withdrawForCompanyPremium(double sum){
-        // we are in overdraft
+
         if (account.getMoney() < 0) {
-            // 50 percent discount for overdraft for premium account
+
             account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee() * companyOverdraftDiscount / 2);
         } else {
             account.setMoney(account.getMoney() - sum);
@@ -47,9 +47,9 @@ public class Company {
     }
 
     public void withdrawForCompany(double sum){
-        // we are in overdraft
+
         if (account.getMoney() < 0) {
-            // no discount for overdraft for not premium account
+
             account.setMoney((account.getMoney() - sum) - sum * account.overdraftFee() * companyOverdraftDiscount);
         } else {
             account.setMoney(account.getMoney() - sum);
